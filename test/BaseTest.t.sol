@@ -27,7 +27,8 @@ contract BaseTest is Test {
     uint256 constant TOKEN_SUPPLY = 1000000 * 10e18;
 
     // Errors
-    bytes ERC20_ALLOWANCE_ERROR = bytes("ERC20: insufficient allowance");
+    bytes ERC20_INSUFFICIENT_ALLOWANCE_ERROR =
+        bytes("ERC20: insufficient allowance");
     bytes ERC721_NOT_APPROVED_ERROR =
         bytes("ERC721: caller is not token owner or approved");
     bytes ERC1155_NOT_APPROVED_ERROR =
@@ -68,17 +69,23 @@ contract BaseTest is Test {
     /// ================
 
     function testMint20() public {
+        // execute
         _mint20(alice, TOKEN_SUPPLY);
+        // assert
         assertEq(token.balanceOf(alice), TOKEN_SUPPLY);
     }
 
     function testMint721() public {
+        // execute
         _mint721(bob, NFT_SUPPLY);
+        // assert
         assertEq(nft721.balanceOf(bob), NFT_SUPPLY);
     }
 
     function testMint1155() public {
+        // execute
         _mint1155(eve, NFT_SUPPLY);
+        // assert
         assertEq(nft1155.balanceOf(eve, tokenId), NFT_SUPPLY);
     }
 
@@ -87,20 +94,29 @@ contract BaseTest is Test {
     /// ====================
 
     function testApproval20() public {
-        testMint20();
+        // setup
+        _mint20(alice, TOKEN_SUPPLY);
+        // execute
         _setApproval20(alice, bob, TOKEN_SUPPLY);
+        // assert
         assertEq(token.allowance(alice, bob), TOKEN_SUPPLY);
     }
 
     function testApproval721() public {
-        testMint721();
+        // setup
+        _mint721(bob, NFT_SUPPLY);
+        // execute
         _setApproval721(bob, eve, true);
+        // assert
         assertEq(nft721.isApprovedForAll(bob, eve), true);
     }
 
     function testApproval1155() public {
-        testMint1155();
+        // setup
+        _mint1155(eve, NFT_SUPPLY);
+        // execute
         _setApproval1155(eve, susan, true);
+        // assert
         assertEq(nft1155.isApprovedForAll(eve, susan), true);
     }
 
@@ -109,21 +125,57 @@ contract BaseTest is Test {
     /// ====================
 
     function testTransfer20() public {
+        // setup
         testApproval20();
+        // execute
         _transfer20(bob, alice, eve, TOKEN_SUPPLY);
+        // assert
         assertEq(token.balanceOf(eve), TOKEN_SUPPLY);
     }
 
+    function testTransfer20RevertInsufficientAllowance() public {
+        // setup
+        _mint20(alice, TOKEN_SUPPLY);
+        // revert
+        vm.expectRevert(ERC20_INSUFFICIENT_ALLOWANCE_ERROR);
+        // execute
+        _transfer20(bob, alice, eve, TOKEN_SUPPLY);
+    }
+
     function testTransfer721() public {
+        // setup
         testApproval721();
+        // execute
         _transfer721(eve, bob, susan, tokenId);
+        // assert
         assertEq(nft721.ownerOf(tokenId), susan);
     }
 
+    function testTransfer721RevertNotAuthorized() public {
+        // setup
+        _mint721(bob, NFT_SUPPLY);
+        // revert
+        vm.expectRevert(ERC721_NOT_APPROVED_ERROR);
+        // execute
+        _transfer721(eve, bob, susan, tokenId);
+    }
+
     function testTransfer1155() public {
+        // setup
         testApproval1155();
+        // execute
         _transfer1155(susan, eve, alice, tokenId, NFT_SUPPLY);
+        // assert
         assertEq(nft1155.balanceOf(alice, tokenId), NFT_SUPPLY);
+    }
+
+    function testTransfer1155RevertNotAuthorized() public {
+        // setup
+        _mint1155(eve, NFT_SUPPLY);
+        // revert
+        vm.expectRevert(ERC1155_NOT_APPROVED_ERROR);
+        // execute
+        _transfer1155(susan, eve, alice, tokenId, NFT_SUPPLY);
     }
 
     /// ===================

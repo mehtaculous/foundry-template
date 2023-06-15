@@ -79,7 +79,7 @@ forge script script/Deploy.s.sol:Deploy --rpc-url $GOERLI_RPC_URL --private-key 
 | 701378               | 3775            |       |        |       |         |
 | Function Name        | min             | avg   | median | max   | # calls |
 | approve              | 24652           | 24652 | 24652  | 24652 | 2       |
-| mint                 | 46589           | 46589 | 46589  | 46589 | 3       |
+| mint                 | 46589           | 46589 | 46589  | 46589 | 4       |
 | transferFrom         | 22197           | 22197 | 22197  | 22197 | 1       |
 
 | src/tokens/NFT721.sol |                 |        |        |        |         |
@@ -87,15 +87,15 @@ forge script script/Deploy.s.sol:Deploy --rpc-url $GOERLI_RPC_URL --private-key 
 | Deployment Cost       | Deployment Size |        |        |        |         |
 | 1164048               | 6085            |        |        |        |         |
 | Function Name         | min             | avg    | median | max    | # calls |
-| mint                  | 296924          | 296924 | 296924 | 296924 | 3       |
+| mint                  | 296924          | 296924 | 296924 | 296924 | 4       |
 | setApprovalForAll     | 24694           | 24694  | 24694  | 24694  | 2       |
-| transferFrom          | 28768           | 28768  | 28768  | 28768  | 1       |
+| transferFrom          | 5759            | 17263  | 17263  | 28768  | 2       |
 
 | src/tokens/NFT1155.sol |                 |       |        |       |         |
 | ---------------------- | --------------- | ----- | ------ | ----- | ------- |
 | Deployment Cost        | Deployment Size |       |        |       |         |
 | 1364268                | 7092            |       |        |       |         |
 | Function Name          | min             | avg   | median | max   | # calls |
-| mint                   | 48057           | 48057 | 48057  | 48057 | 3       |
-| safeTransferFrom       | 23867           | 23867 | 23867  | 23867 | 1       |
+| mint                   | 48057           | 48057 | 48057  | 48057 | 4       |
+| safeTransferFrom       | 3434            | 13650 | 13650  | 23867 | 2       |
 | setApprovalForAll      | 24650           | 24650 | 24650  | 24650 | 2       |
