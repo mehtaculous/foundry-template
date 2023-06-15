@@ -78,9 +78,7 @@ forge script script/Deploy.s.sol:Deploy --rpc-url $GOERLI_RPC_URL --private-key 
 | Deployment Cost      | Deployment Size |       |        |       |         |
 | 701378               | 3775            |       |        |       |         |
 | Function Name        | min             | avg   | median | max   | # calls |
-| allowance            | 804             | 804   | 804    | 804   | 2       |
 | approve              | 24652           | 24652 | 24652  | 24652 | 2       |
-| balanceOf            | 629             | 629   | 629    | 629   | 4       |
 | mint                 | 46589           | 46589 | 46589  | 46589 | 3       |
 | transferFrom         | 22197           | 22197 | 22197  | 22197 | 1       |
 
@@ -89,10 +87,7 @@ forge script script/Deploy.s.sol:Deploy --rpc-url $GOERLI_RPC_URL --private-key 
 | Deployment Cost       | Deployment Size |        |        |        |         |
 | 1164048               | 6085            |        |        |        |         |
 | Function Name         | min             | avg    | median | max    | # calls |
-| balanceOf             | 700             | 700    | 700    | 700    | 3       |
-| isApprovedForAll      | 815             | 815    | 815    | 815    | 2       |
 | mint                  | 296924          | 296924 | 296924 | 296924 | 3       |
-| ownerOf               | 602             | 602    | 602    | 602    | 1       |
 | setApprovalForAll     | 24694           | 24694  | 24694  | 24694  | 2       |
 | transferFrom          | 28768           | 28768  | 28768  | 28768  | 1       |
 
@@ -101,8 +96,6 @@ forge script script/Deploy.s.sol:Deploy --rpc-url $GOERLI_RPC_URL --private-key 
 | Deployment Cost        | Deployment Size |       |        |       |         |
 | 1364268                | 7092            |       |        |       |         |
 | Function Name          | min             | avg   | median | max   | # calls |
-| balanceOf              | 700             | 700   | 700    | 700   | 4       |
-| isApprovedForAll       | 782             | 782   | 782    | 782   | 2       |
 | mint                   | 48057           | 48057 | 48057  | 48057 | 3       |
 | safeTransferFrom       | 23867           | 23867 | 23867  | 23867 | 1       |
 | setApprovalForAll      | 24650           | 24650 | 24650  | 24650 | 2       |

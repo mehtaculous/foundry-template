@@ -86,9 +86,9 @@ contract BaseTest is Test {
     /// ===== APPROVAL =====
     /// ====================
 
-    function testAllowance() public {
+    function testApproval20() public {
         testMint20();
-        _setAllowance(alice, bob, TOKEN_SUPPLY);
+        _setApproval20(alice, bob, TOKEN_SUPPLY);
         assertEq(token.allowance(alice, bob), TOKEN_SUPPLY);
     }
 
@@ -109,7 +109,7 @@ contract BaseTest is Test {
     /// ====================
 
     function testTransfer20() public {
-        testAllowance();
+        testApproval20();
         _transfer20(bob, alice, eve, TOKEN_SUPPLY);
         assertEq(token.balanceOf(eve), TOKEN_SUPPLY);
     }
@@ -148,7 +148,7 @@ contract BaseTest is Test {
         nft1155.mint(_amount);
     }
 
-    function _setAllowance(
+    function _setApproval20(
         address _owner,
         address _operator,
         uint256 _amount
