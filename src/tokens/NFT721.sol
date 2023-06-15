@@ -9,10 +9,8 @@ contract NFT721 is ERC721, Ownable {
 
     constructor() ERC721("ERC721", "NFT") {}
 
-    function mint(uint256 _amount) external {
-        for (uint256 i; i < _amount; ++i) {
-            _mint(msg.sender, ++currentId);
-        }
+    function mint() external {
+        _mint(msg.sender, ++currentId);
     }
 
     function burn(uint256 _tokenId) external {

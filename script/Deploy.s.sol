@@ -11,9 +11,6 @@ contract Deploy is Script {
     NFT721 nft721;
     NFT1155 nft1155;
 
-    uint256 constant NFTS = 3;
-    uint256 constant TOKENS = 1000000 * 10e18;
-
     function run() public {
         vm.startBroadcast();
         deploy();
@@ -30,14 +27,14 @@ contract Deploy is Script {
     }
 
     function mintToken() public {
-        token.mint(TOKENS);
+        token.mint(1000 * 10e18);
     }
 
     function mint721() public {
-        nft721.mint(NFTS);
+        nft721.mint();
     }
 
     function mint1155() public {
-        nft1155.mint(NFTS);
+        nft1155.mint(1);
     }
 }

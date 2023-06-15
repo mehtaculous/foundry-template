@@ -23,8 +23,8 @@ contract BaseTest is Test {
 
     // Constants
     uint256 constant BALANCE = 100 ether;
-    uint256 constant NFT_SUPPLY = 10;
-    uint256 constant TOKEN_SUPPLY = 1000000 * 10e18;
+    uint256 constant NFT_SUPPLY = 1;
+    uint256 constant TOKEN_SUPPLY = 1000 * 10e18;
 
     // Errors
     bytes ERC20_INSUFFICIENT_ALLOWANCE_ERROR =
@@ -77,7 +77,7 @@ contract BaseTest is Test {
 
     function testMint721() public {
         // execute
-        _mint721(bob, NFT_SUPPLY);
+        _mint721(bob);
         // assert
         assertEq(nft721.balanceOf(bob), NFT_SUPPLY);
     }
@@ -104,7 +104,7 @@ contract BaseTest is Test {
 
     function testApproval721() public {
         // setup
-        _mint721(bob, NFT_SUPPLY);
+        _mint721(bob);
         // execute
         _setApproval721(bob, eve, true);
         // assert
@@ -153,7 +153,7 @@ contract BaseTest is Test {
 
     function testTransfer721RevertNotAuthorized() public {
         // setup
-        _mint721(bob, NFT_SUPPLY);
+        _mint721(bob);
         // revert
         vm.expectRevert(ERC721_NOT_APPROVED_ERROR);
         // execute
@@ -192,8 +192,8 @@ contract BaseTest is Test {
         token.mint(_amount);
     }
 
-    function _mint721(address _owner, uint256 _amount) internal prank(_owner) {
-        nft721.mint(_amount);
+    function _mint721(address _owner) internal prank(_owner) {
+        nft721.mint();
     }
 
     function _mint1155(address _owner, uint256 _amount) internal prank(_owner) {

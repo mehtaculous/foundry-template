@@ -78,18 +78,18 @@ forge script script/Deploy.s.sol:Deploy --rpc-url $GOERLI_RPC_URL --private-key 
 | Deployment Cost      | Deployment Size |       |        |       |         |
 | 701378               | 3775            |       |        |       |         |
 | Function Name        | min             | avg   | median | max   | # calls |
-| approve              | 24652           | 24652 | 24652  | 24652 | 2       |
+| approve              | 24652           | 24652 | 24652  | 24652 | 1       |
 | mint                 | 46589           | 46589 | 46589  | 46589 | 4       |
-| transferFrom         | 22197           | 22197 | 22197  | 22197 | 1       |
+| transferFrom         | 3016            | 12606 | 12606  | 22197 | 2       |
 
-| src/tokens/NFT721.sol |                 |        |        |        |         |
-| --------------------- | --------------- | ------ | ------ | ------ | ------- |
-| Deployment Cost       | Deployment Size |        |        |        |         |
-| 1164048               | 6085            |        |        |        |         |
-| Function Name         | min             | avg    | median | max    | # calls |
-| mint                  | 296924          | 296924 | 296924 | 296924 | 4       |
-| setApprovalForAll     | 24694           | 24694  | 24694  | 24694  | 2       |
-| transferFrom          | 5759            | 17263  | 17263  | 28768  | 2       |
+| src/tokens/NFT721.sol |                 |       |        |       |         |
+| --------------------- | --------------- | ----- | ------ | ----- | ------- |
+| Deployment Cost       | Deployment Size |       |        |       |         |
+| 1156441               | 6047            |       |        |       |         |
+| Function Name         | min             | avg   | median | max   | # calls |
+| mint                  | 69139           | 69139 | 69139  | 69139 | 4       |
+| setApprovalForAll     | 24694           | 24694 | 24694  | 24694 | 2       |
+| transferFrom          | 23032           | 23032 | 23032  | 23032 | 1       |
 
 | src/tokens/NFT1155.sol |                 |       |        |       |         |
 | ---------------------- | --------------- | ----- | ------ | ----- | ------- |
