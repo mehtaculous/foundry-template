@@ -1,4 +1,4 @@
-# Forge Template
+# Foundry Template
 
 A template for quickly getting started with foundry
 
